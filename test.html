@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h2>Programming Test Assignment</h2>
+
+    <p id="stories"></p>
+
+    <script>
+        // http://10.23.34.45/getTimeStories 
+        fetch("http://127.0.0.1:8000/api/stories") // I created a local version of the api so that I can check if it will work in live api
+            .then(response => response.json())
+            .then(data => {
+                let list = '<ul>';
+                for (let i = 0; i < data.length; i++) {
+                    list += '<li><a href="' + data[i].link + '">' + data[i].title + '</a></li>';
+                }
+                list += '</ul>';
+                document.getElementById("stories").innerHTML = list;
+            });
+    </script>
+</body>
+
+</html>
